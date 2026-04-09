@@ -70,7 +70,7 @@ payoff_pt = torch.tensor(payoff, dtype=torch.float32)
 class SplineAffineHedge(nn.Module):
     def __init__(self):
         super().__init__()
-        # 12 inputs (the bases) -> 1 output (the hedge) = 13 parameters
+        # 12 inputs (the bases) -> 1 output (the hedge) = 13 parameters :D
         self.linear = nn.Linear(12, 1)
     
     def forward(self, x):
@@ -150,7 +150,6 @@ H_mesh = H_flat.reshape(M_mesh.shape)
 fig = plt.figure(figsize=(12, 8))
 ax = fig.add_subplot(111, projection='3d')
 surf = ax.plot_surface(M_mesh, T_mesh, H_mesh, cmap='viridis', edgecolor='none', alpha=0.8)
-
 ax.set_title('Optimized Affine Spline Hedge Surface', fontsize=14)
 ax.set_xlabel('Moneyness (S/K)')
 ax.set_ylabel('Time to Expiry (Years)')
@@ -176,7 +175,6 @@ H_bsm_mesh = calculate_bsm_surface(M_mesh, T_mesh, sigma, r)
 fig = plt.figure(figsize=(12, 8))
 ax = fig.add_subplot(111, projection='3d')
 surf = ax.plot_surface(M_mesh, T_mesh, H_bsm_mesh, cmap='cividis', edgecolor='none', alpha=0.8)
-
 ax.set_title('Theoretical BSM Delta Surface', fontsize=14)
 ax.set_xlabel('Moneyness (S/K)')
 ax.set_ylabel('Time to Expiry (Years)')
